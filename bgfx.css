@@ -1,0 +1,29 @@
+/* ===== calm animated backgrounds (pick in Settings > Background, or ?bg=aurora|silk|stars|bokeh|grid|off) ===== */
+.bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bgfx canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s ease}
+html[data-bg=silk] .bgfx canvas,html[data-bg=stars] .bgfx canvas,html[data-bg=bokeh] .bgfx canvas{opacity:1}
+.bgfx i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;opacity:0;transition:opacity 1.4s ease;will-change:transform;
+  background:radial-gradient(circle,rgba(var(--glow-rgb),.55) 0%,rgba(var(--glow-rgb),0) 62%)}
+.bgfx i.b1{left:-15vmax;top:-22vmax;animation:bgA 38s ease-in-out infinite alternate}
+.bgfx i.b2{right:-22vmax;top:22vh;background:radial-gradient(circle,rgba(var(--ac-rgb),.20) 0%,rgba(var(--ac-rgb),0) 62%);animation:bgB 46s ease-in-out infinite alternate}
+.bgfx i.b3{left:18vw;bottom:-32vmax;animation:bgC 52s ease-in-out infinite alternate}
+@keyframes bgA{to{transform:translate3d(18vw,12vh,0) scale(1.15)}}
+@keyframes bgB{to{transform:translate3d(-16vw,-14vh,0) scale(1.1)}}
+@keyframes bgC{to{transform:translate3d(14vw,-18vh,0) scale(1.2)}}
+html[data-bg=aurora] .bgfx i{opacity:.8}
+.bgfx .gridsweep{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;overflow:hidden;
+  background-image:linear-gradient(rgba(var(--ac-rgb),.07) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--ac-rgb),.07) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 42%,#000 0%,transparent 78%);mask-image:radial-gradient(ellipse at 50% 42%,#000 0%,transparent 78%)}
+.bgfx .gridsweep::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(var(--ac2-rgb),.12) 50%,transparent 65%);transform:translateX(-100%);animation:gridSweep 16s linear infinite}
+@keyframes gridSweep{to{transform:translateX(100%)}}
+html[data-bg=grid] .bgfx .gridsweep{opacity:1}
+html[data-bg]:not([data-bg=off]):not([data-bg=grid]) .ambient::before{opacity:0}
+.bgopts{display:flex;flex-wrap:wrap;gap:6px}
+.bgopts button{padding:6px 12px;border:1px solid var(--line2);border-radius:99px;font-size:.78rem;color:var(--mut);font-family:inherit;transition:.3s}
+.bgopts button:hover{border-color:var(--gold);color:var(--ink)}
+.bgopts button.on{background:rgba(var(--ac-rgb),.16);color:var(--gold2);border-color:var(--gold)}
+.set-panel{max-height:calc(100vh - 100px);overflow:auto}
+@media (max-width:760px){.bgfx i{animation-duration:80s}}
+@media (prefers-reduced-motion:reduce){.bgfx i,.bgfx .gridsweep::after{animation:none}}
+html[data-quality=light] .bgfx i,html[data-quality=light] .bgfx .gridsweep::after{animation:none}
+html[data-quality=light] .bgfx canvas{display:none}
