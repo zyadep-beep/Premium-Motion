@@ -1,7 +1,7 @@
-/* ===== calm animated backgrounds (pick in Settings > Background, or ?bg=aurora|silk|stars|bokeh|grid|off) ===== */
+/* ===== calm animated backgrounds (pick in Settings > Background, or ?bg=aurora|flow|halo|drape|rays|silk|stars|bokeh|grid|off) ===== */
 .bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .bgfx canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s ease}
-html[data-bg=silk] .bgfx canvas,html[data-bg=stars] .bgfx canvas,html[data-bg=bokeh] .bgfx canvas{opacity:1}
+html[data-bg=silk] .bgfx canvas,html[data-bg=stars] .bgfx canvas,html[data-bg=bokeh] .bgfx canvas,html[data-bg=halo] .bgfx canvas,html[data-bg=drape] .bgfx canvas,html[data-bg=rays] .bgfx canvas,html[data-bg=flow] .bgfx canvas{opacity:1}
 .bgfx i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;opacity:0;transition:opacity 1.4s ease;will-change:transform;
   background:radial-gradient(circle,rgba(var(--glow-rgb),.55) 0%,rgba(var(--glow-rgb),0) 62%)}
 .bgfx i.b1{left:-15vmax;top:-22vmax;animation:bgA 38s ease-in-out infinite alternate}
@@ -11,6 +11,7 @@ html[data-bg=silk] .bgfx canvas,html[data-bg=stars] .bgfx canvas,html[data-bg=bo
 @keyframes bgB{to{transform:translate3d(-16vw,-14vh,0) scale(1.1)}}
 @keyframes bgC{to{transform:translate3d(14vw,-18vh,0) scale(1.2)}}
 html[data-bg=aurora] .bgfx i{opacity:.8}
+html[data-bg=halo] .bgfx i,html[data-bg=drape] .bgfx i,html[data-bg=rays] .bgfx i{opacity:.42}
 .bgfx .gridsweep{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;overflow:hidden;
   background-image:linear-gradient(rgba(var(--ac-rgb),.07) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--ac-rgb),.07) 1px,transparent 1px);background-size:64px 64px;
   -webkit-mask-image:radial-gradient(ellipse at 50% 42%,#000 0%,transparent 78%);mask-image:radial-gradient(ellipse at 50% 42%,#000 0%,transparent 78%)}
